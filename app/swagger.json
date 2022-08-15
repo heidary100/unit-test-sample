@@ -1,0 +1,2543 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server We Will Guide You server.",
+        "version": "1.0.0",
+        "title": "Swagger We Will Guide You",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [{
+            "name": "Home",
+            "description": "REST Operations about Home.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "User",
+            "description": "REST Operations about User.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "Subject",
+            "description": "REST Operations about Subject.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "Guide",
+            "description": "REST Operations about Guide.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "Reference",
+            "description": "REST Operations about Reference.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "ContactUsMessage",
+            "description": "REST Operations about ContactUsMessage.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        },
+
+        {
+            "name": "WebsiteSetting",
+            "description": "REST Operations about WebsiteSetting.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/manage/users": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add a new User",
+                "description": "Adds a new User.",
+                "operationId": "addUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "User model that needs to be added.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/AddUserAdminApiModel"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "User added successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailUserAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get a list of Users",
+                "description": "It's an Api for fetching All The Users.",
+                "operationId": "listUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Number of entities to skip.",
+                        "required": false,
+                        "default": 0,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Number of entities to get.",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Query for searching and sorting.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User list",
+                        "schema": {
+                            "$ref": "#/definitions/UserListAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/manage/users/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Find User by ID",
+                "description": "Returns a single User model.",
+                "operationId": "getUserById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of User to return.",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/DetailUserAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update an existing User",
+                "description": "Update an existing User",
+                "operationId": "updateUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of updated User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Modified User model.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateUserAdminApiModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailUserAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Deletes a User.",
+                "description": "",
+                "operationId": "deleteUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "User id to delete.",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "User deleted successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login an existing User.",
+                "description": "Login an existing User.",
+                "operationId": "loginUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Login api model.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/LoginUserAdminApiModel"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Logged in successfully",
+                        "schema": {
+                            "$ref": "#/definitions/LoginResponseGuestApiModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/forgetPassword": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Forget Password.",
+                "description": "Forget Password.",
+                "operationId": "forgetPasswordUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Forget Password api model.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/ForgetPasswordUserGuestApiModel"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Email was sent to User successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/resetPassword/{token}": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Reset Password.",
+                "description": "Reset Password.",
+                "operationId": "resetPasswordUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "path",
+                        "name": "token",
+                        "description": "Given token from confirmation email.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Reset Password api model.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ResetPasswordUserGuestApiModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Your password changed successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/manage/subjects": {
+            "post": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Add a new Subject",
+                "description": "Adds a new Subject.",
+                "operationId": "addSubject",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Subject model that needs to be added.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/AddSubjectAdminApiModel"
+                    }
+                }],
+                "responses": {
+                    "201": {
+                        "description": "Subject added successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailSubjectGuestApiModel"
+                        }
+                    },
+                    "409": {
+                        "description": "Subject already exists",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Get a list of Subjects.",
+                "description": "It's an Api for fetching All The Subjects.",
+                "operationId": "listSubject",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Number of entities to skip.",
+                        "required": false,
+                        "default": 0,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Number of entities to get.",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Query for searching and sorting.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subjects found",
+                        "schema": {
+                            "$ref": "#/definitions/SubjectListAdminApiModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/manage/subjects/{id}": {
+            "get": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Find Subject by ID",
+                "description": "Returns a single Subject model.",
+                "operationId": "getSubjectById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of Subject to return.",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Subject found",
+                        "schema": {
+                            "$ref": "#/definitions/DetailSubjectGuestApiModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Subject not found",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "put": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Update an existing Subject",
+                "description": "Update an existing Subject",
+                "operationId": "updateSubject",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of updated Subject",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Modified Subject model.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateSubjectAdminApiModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subject updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailSubjectGuestApiModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Subject not found",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Deletes a Subject.",
+                "description": "",
+                "operationId": "deleteSubject",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Subject id to delete.",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Subject deleted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Subject not found",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/subjects": {
+            "get": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Get a list of Subjects and Guides for each Subjects.",
+                "description": "It's an Api for fetching All The Subjects and their Guides.",
+                "operationId": "listSubjectGuest",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Number of entities to skip.",
+                        "required": false,
+                        "default": 0,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Number of entities to get.",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Query for searching and sorting.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subjects found",
+                        "schema": {
+                            "$ref": "#/definitions/SubjectListGuestApiModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/manage/guides": {
+            "post": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Add a new Guide",
+                "description": "Adds a new Guide to the Specific Subject.",
+                "operationId": "addGuide",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Guide model that needs to be added",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/AddGuideAdminApiModel"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Guide added successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailGuideAdminApiModel"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Get a list of Guide",
+                "description": "It's an Api for fetching All The Guides.",
+                "operationId": "listGuide",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Number of entities to skip.",
+                        "required": false,
+                        "default": 0,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Number of entities to get.",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Query for searching and sorting.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Guide list",
+                        "schema": {
+                            "$ref": "#/definitions/GuideListAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/manage/guides/{id}": {
+            "get": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Find Guide by ID",
+                "description": "Returns a single Guide model.",
+                "operationId": "getGuideById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of Guide to return",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/DetailGuideAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "put": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Update an existing Guide",
+                "description": "Update an existing Guide",
+                "operationId": "updateGuide",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Updated Guide",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Modified Guide model.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateGuideAdminApiModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Guide updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailGuideAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Deletes a guide",
+                "description": "",
+                "operationId": "deleteGuide",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Guide id to delete",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Guide deleted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/guides/{id}": {
+            "get": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Find Guide by ID",
+                "description": "Returns a single Guide model.",
+                "operationId": "getGuideByIdGuest",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of Guide to return",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/DetailGuideGuestApiModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/manage/references": {
+            "post": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Add a new Reference",
+                "description": "Adds a new Reference.",
+                "operationId": "addReference",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Reference model that needs to be added",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/AddReferenceAdminApiModel"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Reference added successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailReferenceAdminApiModel"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Get a list of Reference",
+                "description": "It's an Api for fetching All The References.",
+                "operationId": "listReference",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "query",
+                    "name": "parentId",
+                    "description": "Id of parent.",
+                    "required": false,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "References found",
+                        "schema": {
+                            "$ref": "#/definitions/ReferenceListAdminApiModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/manage/references/{id}": {
+            "get": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Find Reference by ID",
+                "description": "Returns a single Reference model.",
+                "operationId": "getReferenceById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of Reference to return",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Reference found",
+                        "schema": {
+                            "$ref": "#/definitions/DetailReferenceAdminApiModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Reference not found",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "put": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Update an existing Reference",
+                "description": "Update an existing Reference",
+                "operationId": "updateReference",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Updated Reference",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Modified Reference model.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateReferenceAdminApiModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reference updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailReferenceAdminApiModel"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Deletes a Reference",
+                "description": "",
+                "operationId": "deleteReference",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Reference id to delete",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Reference deleted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Reference not found",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/references": {
+            "get": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Get a list of Reference",
+                "description": "It's an Api for fetching All The References.",
+                "operationId": "listReferenceGuest",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "query",
+                    "name": "parentId",
+                    "description": "Id of parent.",
+                    "required": false,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "References found",
+                        "schema": {
+                            "$ref": "#/definitions/ReferenceListGuestApiModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/references/{id}": {
+            "get": {
+                "tags": [
+                    "Reference"
+                ],
+                "summary": "Find a specific References by Id.",
+                "description": "Find a specific References by Id.",
+                "operationId": "getReferencesByIdGuest",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of the Reference",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/DetailReferenceGuestApiModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/manage/contactUsMessages": {
+            "get": {
+                "tags": [
+                    "ContactUsMessage"
+                ],
+                "summary": "Get a list of ContactUsMessage",
+                "description": "It's an Api for fetching All The ContactUsMessages.",
+                "operationId": "listContactUsMessage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Number of entities to skip.",
+                        "required": false,
+                        "default": 0,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Number of entities to get.",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Query for searching and sorting.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ContactUsMessage list",
+                        "schema": {
+                            "$ref": "#/definitions/ContactUsMessageListAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/manage/contactUsMessages/changeIsSeen/{id}": {
+            "put": {
+                "tags": [
+                    "ContactUsMessage"
+                ],
+                "summary": "Change IsSeen of an existing ContactUsMessage",
+                "description": "Change IsSeen of an existing ContactUsMessage",
+                "operationId": "changeIsSeenContactUsMessage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of ContactUsMessage",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New IsSeen value.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeIsSeenApiModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ContactUsMessage updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/manage/websiteSetting/": {
+            "get": {
+                "tags": [
+                    "WebsiteSetting"
+                ],
+                "summary": "Get WebsiteSetting",
+                "description": "Returns a single WebsiteSetting model.",
+                "operationId": "getWebsiteSetting",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/DetailWebsiteSettingAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            },
+            "put": {
+                "tags": [
+                    "WebsiteSetting"
+                ],
+                "summary": "Update an existing WebsiteSetting",
+                "description": "Update an existing WebsiteSetting",
+                "operationId": "updateWebsiteSetting",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Modified WebsiteSetting model.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/UpdateWebsiteSettingAdminApiModel"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "WebsiteSetting updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DetailWebsiteSettingAdminApiModel"
+                        }
+                    }
+                },
+                "security": [{
+                    "Bearer": []
+                }]
+            }
+        },
+        "/websiteSetting": {
+            "get": {
+                "tags": [
+                    "WebsiteSetting"
+                ],
+                "summary": "Get WebsiteSetting",
+                "description": "Returns a single WebsiteSetting model.",
+                "operationId": "getWebsiteSettingGuest",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/DetailWebsiteSettingGuestApiModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/contactUsMessage": {
+            "post": {
+                "tags": [
+                    "ContactUsMessage"
+                ],
+                "summary": "Post a ContactUsMessage from user.",
+                "description": "Post a ContactUsMessage from user.",
+                "operationId": "postContactUsMessage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Subject model that needs to be added.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/PostContactUsMessageGuestApiModel"
+                    }
+                }],
+                "responses": {
+                    "201": {
+                        "description": "ContactUsMessage posted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/VoidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Search in subjects, guides and references",
+                "description": "Returns a list as the result of search.",
+                "operationId": "search",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "query",
+                    "in": "query",
+                    "description": "Search query for searching in Subjects, Guides and Reference",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SearchListGuestApiModel"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    },
+
+    "definitions": {
+     
+        "ResponseResult": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "result": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListResponse": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "cursor": {
+                    "type": "string"
+                }
+            }
+        },
+        "VoidResponse": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "ResponseMessage": {
+            "type": "object",
+            "properties": {
+                "eventId": {
+                    "type": "number"
+                },
+                "messageId": {
+                    "type": "number"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "error",
+                        "warning",
+                        "info"
+                    ]
+                }
+            }
+        },
+        "LoginResponseGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "result": {
+                    "type": "object"
+                }
+            }
+        },
+        "AddUserAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "imageName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "passwordConfirmed": {
+                    "type": "string"
+                },
+                "notificationLevel": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "UpdateUserAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "imageName": {
+                    "type": "string"
+                },
+                "notificationLevel": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DetailUserAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {
+                            "type": "string"
+                        },
+                        "lastName": {
+                            "type": "string"
+                        },
+                        "username": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "phoneNumber": {
+                            "type": "string"
+                        },
+                        "imageName": {
+                            "type": "string"
+                        },
+                        "loginHistory": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        },
+                        "notificationLevel": {
+                            "type": "number"
+                        },
+                        "twoStepLoginType": {
+                            "type": "string",
+                            "enum": [
+                                "email",
+                                "phoneNumber",
+                                "both"
+                            ]
+                        },
+                        "isEnabled": {
+                            "type": "boolean"
+                        },
+                        "isLockedOut": {
+                            "type": "boolean"
+                        },
+                        "isEmailConfirmed": {
+                            "type": "boolean"
+                        },
+                        "isPhoneNumberConfirmed": {
+                            "type": "boolean"
+                        },
+                        "lockedOutEndDateTimeUTC": {
+                            "type": "object"
+                        },
+                        "creationDate": {
+                            "type": "object"
+                        },
+                        "isTwoStepAuthenticationEnabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "UserListAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "imageName": {
+                                "type": "string"
+                            },
+                            "isEnabled": {
+                                "type": "boolean"
+                            },
+                            "isLockedOut": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "LoginUserAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "ForgetPasswordUserGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "ResetPasswordUserGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "confirmPassword": {
+                    "type": "string"
+                }
+            }
+        },
+        "AddSubjectAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "priorityOrder": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "UpdateSubjectAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "priorityOrder": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DetailSubjectGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "priorityOrder": {
+                            "type": "number"
+                        },
+                        "isEnabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "SubjectListAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "isEnabled": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "AddGuideAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "priorityOrder": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "subjectId": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdateGuideAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "priorityOrder": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "subjectId": {
+                    "type": "string"
+                }
+            }
+        },
+        "DetailGuideAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "priorityOrder": {
+                            "type": "number"
+                        },
+                        "isEnabled": {
+                            "type": "boolean"
+                        },
+                        "lastModifiedDateTime": {
+                            "type": "object"
+                        },
+                        "tags": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "author": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "firstName": {
+                                    "type": "string"
+                                },
+                                "lastName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "subject": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "GuideListAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "isEnabled": {
+                                "type": "boolean"
+                            },
+                            "lastModifiedDateTime": {
+                                "type": "object"
+                            },
+                            "author": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "subject": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "AddReferenceAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "priorityOrder": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "parentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdateReferenceAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "priorityOrder": {
+                    "type": "number"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "parentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "DetailReferenceAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "priorityOrder": {
+                            "type": "number"
+                        },
+                        "isEnabled": {
+                            "type": "boolean"
+                        },
+                        "lastModifiedDateTime": {
+                            "type": "object"
+                        },
+                        "parent": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "lastModifierUser": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "ReferenceListAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "isEnabled": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "ReferenceListGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "DetailReferenceGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "text": {
+                                "type": "string"
+                            },
+                            "lastModifiedDateTime": {
+                                "type": "object"
+                            },
+                            "parent": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "ContactUsMessageListAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            },
+                            "text": {
+                                "type": "string"
+                            },
+                            "isSeen": {
+                                "type": "boolean"
+                            },
+                            "sendDate": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "UpdateWebsiteSettingAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "contactUsText": {
+                    "type": "string"
+                },
+                "aboutUsText": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "keywords": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "DetailWebsiteSettingAdminApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "contactUsText": {
+                            "type": "string"
+                        },
+                        "aboutUsText": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "keywords": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DetailWebsiteSettingGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "contactUsText": {
+                            "type": "string"
+                        },
+                        "aboutUsText": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "keywords": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "SubjectListGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "guides": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "DetailGuideGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+
+                        "title": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "lastModifiedDateTime": {
+                            "type": "object"
+                        },
+                        "tags": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "author": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "firstName": {
+                                    "type": "string"
+                                },
+                                "lastName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "subject": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "SearchListGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResponseMessage"
+                    }
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "subjects": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "guides": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "text": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "references": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "text": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "totalCount": {
+                    "type": "number"
+                }
+            }
+        },
+        "PostContactUsMessageGuestApiModel": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

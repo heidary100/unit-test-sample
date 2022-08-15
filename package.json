@@ -1,0 +1,58 @@
+{
+    "name": "we-will-guide-you",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./app/server.js",
+        "start-dev": "nodemon ./app/server.js",
+        "test": "jest",
+        "test-coverage": "jest --coverage",
+        "lint": "eslint app",
+        "format": "prettier --write \"**/*.+(js|json|yml|yaml|md)\""
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "amqplib": "^0.5.3",
+        "body-parser": "^1.18.3",
+        "config": "^3.0.1",
+        "crypto": "^1.0.1",
+        "elasticsearch": "^15.4.1",
+        "express": "^4.16.4",
+        "ioredis": "^4.6.2",
+        "joi": "^14.3.1",
+        "jsonwebtoken": "^8.4.0",
+        "lodash": "^4.17.11",
+        "mongoose": "^5.4.1",
+        "mongoose-exists": "^0.6.5",
+        "mongoose-unique-validator": "^2.0.2",
+        "multer": "^1.4.1",
+        "nodemailer": "^5.1.1",
+        "speakeasy": "^2.0.0",
+        "swagger-ui-express": "^4.0.2",
+        "winston": "^3.1.0",
+        "ws": "^6.1.4"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.9",
+        "eslint": "^5.13.0",
+        "eslint-config-prettier": "^3.6.0",
+        "jest": "^24.3.1",
+        "node-mocks-http": "^1.7.3",
+        "nodemon": "^1.18.9",
+        "prettier": "^1.16.1"
+    },
+    "optionalDependencies": {
+        "bufferutil": "^4.0.1",
+        "utf-8-validate": "^5.0.2"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "collectCoverageFrom": [
+            "**/*.{js,jsx}",
+            "!**/node_modules/**",
+            "!**/vendor/**"
+        ]
+    }
+}

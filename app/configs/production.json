@@ -1,0 +1,13 @@
+{
+    "database": {
+        "connection": "mongodb://localhost/we-will-guide-you",
+        "password": "db_password"
+    },
+    "jwt": {
+        "privateKey": "tk_password"
+    },
+    "https": {
+        "key": "privatekey.pem",
+        "cert": "certificate.pem"
+    }
+}

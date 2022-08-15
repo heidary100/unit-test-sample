@@ -1,0 +1,8 @@
+{
+    "database": {
+        "password": "db_password"
+    },
+    "jwt": {
+        "privateKey": "tk_password"
+    }
+}

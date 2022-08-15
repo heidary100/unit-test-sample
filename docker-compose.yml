@@ -1,0 +1,28 @@
+version: '2'
+services:
+    app:
+        container_name: we-will-guide-you
+        restart: always
+        build: .
+        ports:
+            - '80:3000'
+        links:
+            - mongo
+            - redis
+        depends_on:
+            - mongo
+            - redis
+
+    mongo:
+        container_name: mongo
+        environment:
+            MONGODB_DATABASE: "we-will-guide-you"
+        volumes:
+            - /var/lib/docker/volumes/data/_data:/data/db
+        image: mongo
+        
+        
+    redis:
+      image: redis
+      ports:
+        - "6379"

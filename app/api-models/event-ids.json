@@ -1,0 +1,11 @@
+{
+    "200": "Admin: WebsiteSetting found",
+    "201": "Admin: Getting WebsiteSetting failed",
+    "202": "Admin: WebsiteSetting has been updated",
+    "203": "Admin: Updating WebsiteSetting failed",
+    "204": "Admin: WebsiteSetting added",
+    "205": "Admin: Adding WebsiteSetting failed",
+    "206": "Guest: WebsiteSetting found",
+    "207": "Guest: Getting WebsiteSetting failed",
+    "208": "Admin: Error at validate UpdateWebsiteSettingAdminApiModel in WebsiteSetting Controller"
+}
